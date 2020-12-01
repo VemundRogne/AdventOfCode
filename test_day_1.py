@@ -12,10 +12,9 @@ def find_solution_brute(numbers):
 
 def find_solution_brute_part_2(numbers):
     for n1 in numbers:
-        for n2 in numbers:
-            for n3 in numbers:
-                if sum([n1, n2, n3]) == 2020:
-                    return (n1, n2, n3)
+        for n2 in [n for n in numbers if n < 2020-n1]:
+            for n3 in [n for n in numbers if n == 2020-n1-n2]:
+                return (n1, n2, n3)
 
 
 def verify_solution(numbers):
