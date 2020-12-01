@@ -23,4 +23,5 @@ def test_brute_solution():
     )
 
     solution = verify_solution(number_1, number_2)
+    assert solution == 888331
     print("Solution:", solution)
