@@ -10,6 +10,14 @@ def find_solution_brute(numbers):
                 return (number_1, number_2)
 
 
+def find_solution_brute_part_2(numbers):
+    for n1 in numbers:
+        for n2 in numbers:
+            for n3 in numbers:
+                if sum([n1, n2, n3]) == 2020:
+                    return (n1, n2, n3)
+
+
 def verify_solution(numbers):
     assert sum(numbers) == 2020
 
@@ -28,4 +36,15 @@ def test_brute_solution():
 
     solution = verify_solution(solution)
     assert solution == 888331
+    print("Solution:", solution)
+
+
+def test_brute_solution_part_2():
+    solution = find_solution_brute_part_2(
+        read_input(
+            "day_1_input.txt"
+        )
+    )
+
+    solution = verify_solution(solution)
     print("Solution:", solution)
