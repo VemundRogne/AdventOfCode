@@ -33,7 +33,7 @@ def test_parse_line():
     assert policy == (1, 3, "a")
 
 
-def check_password_validity(password, policy):
+def check_password_validity(password, policy, positional_policy=False):
     """Checks if a password is valid
 
     Args:
@@ -44,6 +44,11 @@ def check_password_validity(password, policy):
     Returns:
         True if the password is valid, False if it is not.
     """
+    if positional_policy:
+        p1 = password[policy[0] - 1] == policy[2]
+        p2 = password[policy[1] - 1] == policy[2]
+        return p1 ^ p2
+
     y = lambda x : x == policy[2]   # Returns true if input x == policy.character
     char_x_in_pswd = list(filter(y, password))
 
@@ -51,6 +56,7 @@ def check_password_validity(password, policy):
     if num_character >= policy[0] and num_character <= policy[1]:
         return True
     return False
+
 
 
 def test_check_password_validity():
@@ -64,7 +70,18 @@ def test_check_password_validity():
     assert check_password_validity(invalid_password_2, policy) == False
 
 
-def count_valid_passwords(lines):
+def test_check_password_validity_positional():
+    valid_password = "abcde"
+    invalid_password = "abade"
+    invalid_password_2 = "bedge"
+    policy = (1, 3, "a")
+
+    assert check_password_validity(valid_password, policy, positional_policy=True) == True
+    assert check_password_validity(invalid_password, policy, positional_policy=True) == False
+    assert check_password_validity(invalid_password_2, policy, positional_policy=True) == False
+
+
+def count_valid_passwords(lines, positional_policy=False):
     """This function solves day2
 
     Arguments:
@@ -78,7 +95,7 @@ def count_valid_passwords(lines):
     for line in lines:
         password, policy = parse_line(line)
 
-        if check_password_validity(password, policy):
+        if check_password_validity(password, policy, positional_policy=positional_policy):
             n_valid_passwords += 1
     
     return n_valid_passwords
@@ -91,3 +108,8 @@ def test_count_valid_passwords():
 def test_solve_d2_p1():
     d1_input = load_input("inputs/d2.input")
     print("Solution:", count_valid_passwords(d1_input))
+
+
+def test_solve_d2_p2():
+    d1_input = load_input("inputs/d2.input")
+    print("Solution:", count_valid_passwords(d1_input, positional_policy=True))
