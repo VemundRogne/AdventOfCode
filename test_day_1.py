@@ -29,7 +29,7 @@ def verify_solution(numbers):
 def test_brute_solution():
     solution = find_solution_brute(
         read_input(
-            "day_1_input.txt"
+            "inputs/d1.input"
         )
     )
 
@@ -41,7 +41,7 @@ def test_brute_solution():
 def test_brute_solution_part_2():
     solution = find_solution_brute_part_2(
         read_input(
-            "day_1_input.txt"
+            "inputs/d1.input"
         )
     )
 
