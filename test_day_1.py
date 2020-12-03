@@ -26,7 +26,7 @@ def verify_solution(numbers):
     return running_product
 
 
-def test_brute_solution():
+def test_solve_d1_p1():
     solution = find_solution_brute(
         read_input(
             "inputs/d1.input"
@@ -35,10 +35,10 @@ def test_brute_solution():
 
     solution = verify_solution(solution)
     assert solution == 888331
-    print("Solution:", solution)
+    print("Solution:", solution, end=' ')
 
 
-def test_brute_solution_part_2():
+def test_solve_d1_p2():
     solution = find_solution_brute_part_2(
         read_input(
             "inputs/d1.input"
@@ -46,4 +46,4 @@ def test_brute_solution_part_2():
     )
 
     solution = verify_solution(solution)
-    print("Solution:", solution)
+    print("Solution:", solution, end=' ')

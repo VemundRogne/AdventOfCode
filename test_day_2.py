@@ -107,9 +107,9 @@ def test_count_valid_passwords():
 
 def test_solve_d2_p1():
     d1_input = load_input("inputs/d2.input")
-    print("Solution:", count_valid_passwords(d1_input))
+    print("Solution:", count_valid_passwords(d1_input), end=' ')
 
 
 def test_solve_d2_p2():
     d1_input = load_input("inputs/d2.input")
-    print("Solution:", count_valid_passwords(d1_input, positional_policy=True))
+    print("Solution:", count_valid_passwords(d1_input, positional_policy=True), end=' ')
